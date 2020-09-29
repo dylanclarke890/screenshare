@@ -130,11 +130,11 @@ const Room = (props) => {
         })
     }
 
-    let isAudio = true;
-    function toggleAudio() {
-        isAudio = !isAudio;
-        userStream.getAudioTracks()[0].enabled = isAudio;
-        };
+    audioButton.onclick(function(evt) {
+        const newState = !userStream.current.getAudioTracks()[0].enabled;
+        audioButton.innerHTML = newState ? "&#x25B6;&#xFE0F;" : "&#x23F8;&#xFE0F;";
+        myAudioTrack.enabled = newState;
+      });
     
 
     let isVideo = true;
@@ -161,7 +161,7 @@ const Room = (props) => {
             <div>
             <button onClick={shareScreen}>Share Screen</button>
             <button onClick={toggleVideo}>Toggle Video</button>
-            <button onClick={toggleAudio}>Toggle Audio</button>
+            <button onClick={audioButton}>Toggle Audio</button>
             <button onClick={fullScreen}>Full Screen</button>
             </div>
             <video id="user" muted style={{height: 500, width: 500}} autoPlay ref={userVideo} />
