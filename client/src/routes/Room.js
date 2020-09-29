@@ -132,16 +132,16 @@ const Room = (props) => {
 
     function audioButton() {
         const newState = !userStream.current.getAudioTracks()[0].enabled;
-        audioButton.innerHTML = newState ? "&#x25B6;&#xFE0F;" : "&#x23F8;&#xFE0F;";
+        audioButton.innerHTML = newState ? "Mute" : "Unmute";
         userStream.current.getAudioTracks()[0].enabled = newState;
       };
     
 
-    let isVideo = true;
-    function toggleVideo() {
-        isVideo = !isVideo;
-        userStream.getVideoTracks()[0].enabled = isVideo;
-        };
+    function videoButton() {
+        const newState = !userStream.current.getVideoTracks()[0].enabled;
+        videoButton.innerHTML = newState ? "Stop Video" : "Share Video";
+        userStream.current.getVideoTracks()[0].enabled = newState;
+      };
 
     let partVideo = document.getElementById("partner");
     function fullScreen() {
@@ -160,7 +160,7 @@ const Room = (props) => {
         <div>
             <div>
             <button onClick={shareScreen}>Share Screen</button>
-            <button onClick={toggleVideo}>Toggle Video</button>
+            <button onClick={videoButton}>Toggle Video</button>
             <button onClick={audioButton}>Toggle Audio</button>
             <button onClick={fullScreen}>Full Screen</button>
             </div>
