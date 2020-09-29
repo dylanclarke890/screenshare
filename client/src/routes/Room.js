@@ -132,7 +132,7 @@ const Room = (props) => {
 
     function audioButton() {
         const newState = !userStream.current.getAudioTracks()[0].enabled;
-        document.getElementById("audioControl").innerHTML = (newState) ? "Mute" : "Unmute";
+        document.getElementById("audioControl").innerHTML = (newState) ? "Mute Audio" : "Unmute Audio";
         userStream.current.getAudioTracks()[0].enabled = newState;
       };
     
@@ -155,11 +155,12 @@ const Room = (props) => {
     
     return (
         <div>
+            <h1>RTCTime</h1>
             <div>
-            <button onClick={shareScreen}>Share Screen</button>
-            <button id="videoControl" onClick={videoButton}>Toggle Video</button>
-            <button id="audioControl" onClick={audioButton}>Toggle Audio</button>
-            <button onClick={toggleFullScreen}>Full Screen</button>
+            <button onClick={shareScreen} style={{width: 20}}>Share Screen</button>
+            <button id="videoControl" onClick={videoButton} style={{width: 20}}>Stop Video</button>
+            <button id="audioControl" onClick={audioButton} style={{width: 20}}>Mute Audio</button>
+            <button onClick={toggleFullScreen} style={{width: 20}}>Full Screen</button>
             </div>
             <video id="user" muted style={{height: 500, width: 500}} autoPlay ref={userVideo} />
             <video id="partner"style={{height: 500, width: 500}} autoPlay ref={partnerVideo} />
