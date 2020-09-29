@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import io from "socket.io-client";
+const fullscreen = require("fullscreen");
 
 const Room = (props) => {
     const userVideo = useRef();
@@ -143,26 +144,23 @@ const Room = (props) => {
         userStream.current.getVideoTracks()[0].enabled = newState;
       };
 
-    let partVideo = document.getElementById("partner");
-    function fullScreen() {
-        if (partVideo.requestFullscreen) {
-            partVideo.requestFullscreen();
-        } else if (partVideo.mozRequestFullScreen) { /* Firefox */
-            partVideo.mozRequestFullScreen();
-        } else if (partVideo.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            partVideo.webkitRequestFullscreen();
-        } else if (partVideo.msRequestFullscreen) { /* IE/Edge */
-            partVideo.msRequestFullscreen();
-        }
-    }    
+      function toggleFullScreen(){
+          const vid = document.getElementById("partner")
+        if(vid.requestFullScreen){
+            vid.requestFullScreen();
+        } else if(vid.webkitRequestFullScreen){
+            vid.webkitRequestFullScreen();
+        } else if(vid.mozRequestFullScreen){
+            vid.mozRequestFullScreen();
+        }   
     
     return (
         <div>
             <div>
             <button onClick={shareScreen}>Share Screen</button>
-            <button onClick={videoButton}>Toggle Video</button>
-            <button onClick={audioButton}>Toggle Audio</button>
-            <button onClick={fullScreen}>Full Screen</button>
+            <button onClick={videoButton}>Stop Video</button>
+            <button onClick={audioButton}>Mute Audio</button>
+            <button onClick={toggleFullScreen}>Full Screen</button>
             </div>
             <video id="user" muted style={{height: 500, width: 500}} autoPlay ref={userVideo} />
             <video id="partner"style={{height: 500, width: 500}} autoPlay ref={partnerVideo} />
