@@ -130,11 +130,11 @@ const Room = (props) => {
         })
     }
 
-    audioButton.onclick(function(evt) {
+    function audioButton() {
         const newState = !userStream.current.getAudioTracks()[0].enabled;
         audioButton.innerHTML = newState ? "&#x25B6;&#xFE0F;" : "&#x23F8;&#xFE0F;";
-        myAudioTrack.enabled = newState;
-      });
+        userStream.current.getAudioTracks()[0].enabled = newState;
+      };
     
 
     let isVideo = true;
