@@ -142,16 +142,17 @@ const Room = (props) => {
         isVideo = !isVideo;
         userStream.getVideoTracks()[0].enabled = isVideo;
         };
-    
+
+    let partVideo = document.getElementById("partner");
     function fullScreen() {
-        if ($("#partner").requestFullscreen) {
-            $("#partner").requestFullscreen();
-        } else if ($("#partner").mozRequestFullScreen) { /* Firefox */
-            $("#partner").mozRequestFullScreen();
-        } else if ($("#partner").webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            $("#partner").webkitRequestFullscreen();
-        } else if ($("#partner").msRequestFullscreen) { /* IE/Edge */
-            $("#partner").msRequestFullscreen();
+        if (partVideo.requestFullscreen) {
+            partVideo.requestFullscreen();
+        } else if (partVideo.mozRequestFullScreen) { /* Firefox */
+            partVideo.mozRequestFullScreen();
+        } else if (partVideo.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            partVideo.webkitRequestFullscreen();
+        } else if (partVideo.msRequestFullscreen) { /* IE/Edge */
+            partVideo.msRequestFullscreen();
         }
     }    
     
