@@ -158,7 +158,7 @@ const Room = (props) => {
     
     return (
         <div>
-            <div style={{margin: auto}}>
+            <div>
             <button onClick={shareScreen}>Share Screen</button>
             <button onClick={toggleVideo}>Toggle Video</button>
             <button onClick={toggleAudio}>Toggle Audio</button>
