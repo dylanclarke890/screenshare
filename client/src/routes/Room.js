@@ -130,11 +130,42 @@ const Room = (props) => {
         })
     }
 
+    let isAudio = true;
+    function toggleAudio() {
+        isAudio = !isAudio;
+        userStream.getAudioTracks()[0].enabled = isAudio;
+        };
+    
+
+    let isVideo = true;
+    function toggleVideo() {
+        isVideo = !isVideo;
+        userStream.getVideoTracks()[0].enabled = isVideo;
+        };
+    
+    function fullScreen() {
+        if ($("#partner").requestFullscreen) {
+            $("#partner").requestFullscreen();
+        } else if ($("#partner").mozRequestFullScreen) { /* Firefox */
+            $("#partner").mozRequestFullScreen();
+        } else if ($("#partner").webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            $("#partner").webkitRequestFullscreen();
+        } else if ($("#partner").msRequestFullscreen) { /* IE/Edge */
+            $("#partner").msRequestFullscreen();
+        }
+    }    
+    
     return (
         <div>
-            <video controls muted style={{height: 500, width: 500}} autoPlay ref={userVideo} />
-            <video controls style={{height: 500, width: 500}} autoPlay ref={partnerVideo} />
-            <button onClick={shareScreen}>Share screen</button>
+            <div style="margin: 0 auto">
+            <button onClick={shareScreen}>Share Screen</button>
+            <button onClick={toggleVideo}>Toggle Video</button>
+            <button onClick={toggleAudio}>Toggle Audio</button>
+            <button onClick={fullScreen}>Full Screen</button>
+            </div>
+            <video id="user" muted style={{height: 500, width: 500}} autoPlay ref={userVideo} />
+            <video id="partner"style={{height: 500, width: 500}} autoPlay ref={partnerVideo} />
+
         </div>
     );
 };
