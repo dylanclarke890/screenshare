@@ -144,15 +144,15 @@ const Room = (props) => {
         userStream.current.getVideoTracks()[0].enabled = newState;
       };
 
-      function toggleFullScreen(){
-          const vid = document.getElementById("partner")
+    function toggleFullScreen(){
+        const vid = document.getElementById("partner")
         if(vid.requestFullScreen){
             vid.requestFullScreen();
         } else if(vid.webkitRequestFullScreen){
             vid.webkitRequestFullScreen();
         } else if(vid.mozRequestFullScreen){
             vid.mozRequestFullScreen();
-        }   
+        }}   
     
     return (
         <div>
