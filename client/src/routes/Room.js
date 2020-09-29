@@ -132,14 +132,14 @@ const Room = (props) => {
 
     function audioButton() {
         const newState = !userStream.current.getAudioTracks()[0].enabled;
-        audioButton.innerHTML = newState ? "Mute" : "Unmute";
+        audioButton.innerHTML = (newState) ? "Mute" : "Unmute";
         userStream.current.getAudioTracks()[0].enabled = newState;
       };
     
 
     function videoButton() {
         const newState = !userStream.current.getVideoTracks()[0].enabled;
-        videoButton.innerHTML = newState ? "Stop Video" : "Share Video";
+        videoButton.innerHTML = (newState) ? "Stop Video" : "Share Video";
         userStream.current.getVideoTracks()[0].enabled = newState;
       };
 
@@ -157,8 +157,8 @@ const Room = (props) => {
         <div>
             <div>
             <button onClick={shareScreen}>Share Screen</button>
-            <button onClick={videoButton}>Stop Video</button>
-            <button onClick={audioButton}>Mute Audio</button>
+            <button onClick={videoButton}>Toggle Video</button>
+            <button onClick={audioButton}>Toggle Audio</button>
             <button onClick={toggleFullScreen}>Full Screen</button>
             </div>
             <video id="user" muted style={{height: 500, width: 500}} autoPlay ref={userVideo} />
