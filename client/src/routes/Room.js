@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import io from "socket.io-client";
-const fullscreen = require("fullscreen");
 
 const Room = (props) => {
     const userVideo = useRef();
